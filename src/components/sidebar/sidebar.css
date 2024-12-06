@@ -1,0 +1,140 @@
+.headerSidebar {
+    display: flex;
+    gap: 30px;
+    max-width: 100%;
+    align-items: flex-start;
+    margin-bottom: 0px;
+    background-color: var(--primary-color);
+    padding-top: 10px;
+
+
+}
+
+.headerSidebar h4 {
+    margin-right: -13px;
+    padding-top: 3px;
+    color: var(--white);
+    font-size: 20px;
+    
+
+}
+.headerSidebar .image{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 40px;
+}
+
+.headerSidebar i.bi {
+    font-size: 30px;
+    cursor: pointer;
+    color: var(--white);
+    margin-right: 60%;
+
+}
+
+.sidebar-container {
+    background-color: var(--primary-color);
+z-index: 1;
+    margin-top: 0px;
+    max-width: 210px;
+    height: 100vh
+}
+
+.sidebar-container::-webkit-scrollbar {
+    display: none;
+}
+
+.sidebar-container a {
+    color: var(--white);
+    text-decoration: none;
+    padding: 10px;
+    font-size: 15px;
+ 
+
+
+}
+
+.Sidebarlogo {
+    max-width: 70px;
+    /* margin: auto; */
+    margin-left: 40px;
+    margin-bottom: 2rem;
+}
+
+.nav-option {
+    display: flex;
+    /* flex-direction: column; */
+    gap: 20px;
+    align-items: center;
+    padding: 0px 0px 0px 30px;
+    width: 210px;
+}
+
+
+.nav-option:hover {
+    background-color: var(--secondary-color);
+    cursor: pointer;
+
+}
+
+.nav-option i.bi {
+    font-size: 20px;
+    color: var(--white);
+}
+
+@media screen and (min-width :250px) {
+    .navCollapse {
+        width: 80px;
+    }
+
+    .navCollapse .nav-option h3 {
+        display: none;
+    }
+
+    .navCollapse .nav-option i.bi {
+        padding: 28px;
+    }
+
+}
+@media  screen and (min-width:907px) {
+    .headerSidebar .image{
+        /* width: 80px;
+        height: 60px; */
+        border-radius: 60%;
+    }
+    
+}
+@media  screen and (min-width:784px) {
+    .headerSidebar .image{
+        /* width: 100px;
+        height: 60px; */
+        border-radius: 90%;
+    }
+    
+}
+@media screen and (max-width:576px) {
+    .headerSidebar h4 {
+     /* display: none; */
+     margin-left: -183px;
+  
+    }
+    .headerSidebar .image{
+      margin-left: -3px;
+ 
+    }
+ 
+    
+}
+@media screen and (max-width:320px) {
+    .headerSidebar h4 {
+   display: none;
+  
+    }
+    .headerSidebar .image{
+      margin-left: -160px;
+ 
+    }
+ 
+    
+}
