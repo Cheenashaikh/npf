@@ -1,8 +1,8 @@
 .table {
     margin-left: 260px;
     margin-top: -45%;
-    position: relative;
-    z-index: -1;
+  
+
     
 }
 .content-table{
@@ -11,6 +11,8 @@
     font-size: 0.9rem;
     min-width: 400px;
     animation: fadeIn 0.6s ease-in-out;
+    position: relative;
+    z-index: -1;
     
    
   
@@ -104,7 +106,7 @@
        
        
         margin-left: 100px;
-    width: 100%;
+    width: 60%;
       
       
         
@@ -114,19 +116,5 @@
   
   
 }
-.content-table::-webkit-scrollbar{
-    width: 8px;
-    height: 8px;
-}
-.content-table::-webkit-scrollbar-track{
-    background: #f1f1f1;
-    border-radius: 10px;
-}
-.content-table::-webkit-scrollbar-thumb{
-    background: #888;
-    border-radius: 8px;
-}
-.content-table::-webkit-scrollbar-thumb:hover {
-    background: #555;
-}
+
 }
