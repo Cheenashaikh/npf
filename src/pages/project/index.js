@@ -17,11 +17,11 @@ function Project({user}){
             </thead>
             <tbody>
                 <tr>
-                    <td>{user.registration}</td>
-                    <td>{user.name}</td>
-                    <td>{user.cnic}</td>
-                    <td>{user. projectName}</td>
-                    <td>{user. code}</td>
+                    <td>{user.registration || "N/A"} </td>
+                    <td>{user.name || "N/A"}</td>
+                    <td>{user.cnic || "N/A"}</td>
+                    <td>{user. projectName || "N/A"}</td>
+                    <td>{user. code || "N/A"}</td>
                 </tr>
             </tbody>
         </table>
