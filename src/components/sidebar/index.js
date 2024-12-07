@@ -1,12 +1,12 @@
 
 
 import React, { useState } from "react";
-import { Link } from "react-router-dom"; 
+import { Link } from "react-router-dom";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./sidebar.css";
 
 function Sidebar({ user, onLogout }) {
-    const [navCollapse, setNavCollapse] = useState(false); 
+    const [navCollapse, setNavCollapse] = useState(false);
 
     return (
         <div>
@@ -19,12 +19,13 @@ function Sidebar({ user, onLogout }) {
                     />
                     <i
                         className="bi bi-justify"
-                        onClick={() => setNavCollapse(!navCollapse)} 
+                        onClick={() => setNavCollapse(!navCollapse)}
                     ></i>
-                   <h4 className="h4">{user.name}</h4>
-                   
+
+                    <h4 className="h4">{user.name}</h4>
+
                     <img src={user.image} className="image" />
-                    
+
                 </div>
                 <div className={`sidebar-container ${navCollapse ? "navCollapse" : ""}`}>
                     <div className="nav-option option1">

@@ -35,7 +35,7 @@
 
 .sidebar-container {
     background-color: var(--primary-color);
-z-index: 1;
+    z-index: 10;
     margin-top: 0px;
     max-width: 210px;
     height: 100vh
@@ -50,6 +50,7 @@ z-index: 1;
     text-decoration: none;
     padding: 10px;
     font-size: 15px;
+    
  
 
 
@@ -69,6 +70,7 @@ z-index: 1;
     align-items: center;
     padding: 0px 0px 0px 30px;
     width: 210px;
+
 }
 
 
@@ -82,11 +84,18 @@ z-index: 1;
     font-size: 20px;
     color: var(--white);
 }
+.navCollapse.nav-option:hover{
+    background-color: transparent !important;
+}
+.navCollapse.nav-option{
+    background-color: transparent !important;
 
+}
 @media screen and (min-width :250px) {
     .navCollapse {
         width: 80px;
     }
+    
 
     .navCollapse .nav-option h3 {
         display: none;
@@ -95,6 +104,7 @@ z-index: 1;
     .navCollapse .nav-option i.bi {
         padding: 28px;
     }
+    
 
 }
 @media  screen and (min-width:907px) {

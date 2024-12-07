@@ -1,28 +1,42 @@
 import React, { useState } from "react";
 import image from "../../assets/pngtree-modern-home-3d-concept-png-image_13761355-removebg-preview.png";
 import "./signup.css";
-import dummyUsers from "../../data/user";
-
+import axios from "axios";
 function SignUp({ onLogin }) {
     const [cnic, setCnic] = useState("");
     const [mobile, setMobile] = useState("");
     const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
 
-    const handleClick = (e) => {
-        e.preventDefault();
 
-        // Find the user based on entered credentials
-        const user = dummyUsers.find(
-            (user) => user.cnic === cnic && user.mobile === mobile
-        );
+   
 
-        if (user) {
-            setError("");
-            onLogin(user); // Pass the user data to the parent component
-        } else {
-            setError("Invalid CNIC or Mobile Number");
-        }
-    };
+    const handleClick = async (e) => {
+        e.preventDefault(e);
+        setLoading(true);
+        
+        try {
+            console.log("CNIC:", cnic);
+            console.log("Mobile:", mobile);
+            const response=await axios.post("/membership/api/auth/login",{cnic,mobile_no:mobile});
+            console.log(response.data);
+            if(response.data.status){
+                onLogin(response.data.data);
+            }else{
+                
+                setError(response.data.message);
+
+            }}catch(error){
+                console.error(error);
+                setTimeout(()=>{
+                    setLoading(false);
+                    setCnic("");
+                    setMobile("");
+                    setError("An error accured during login")
+                },500);
+            }
+        };
+    
 
     return (
         <div className="signUpContainer">
@@ -61,7 +75,9 @@ function SignUp({ onLogin }) {
                             />
                             <label htmlFor="mobile-number">Mobile number</label>
                         </div>
-                        <button type="submit">Sign in</button>
+                        <button type="submit" disabled={loading}>
+                            {loading ? "Signing in..." : "Sign in"}
+                        </button>
                         {error && <p className="error">{error}</p>}
                     </form>
                 </div>
@@ -71,3 +87,4 @@ function SignUp({ onLogin }) {
 }
 
 export default SignUp;
+

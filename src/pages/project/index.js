@@ -4,8 +4,9 @@ function Project({user}){
     return(
         <div className="table">
        
-        <table className="content-table">
-            <thead>
+       <table className="content-table" >
+
+            <thead >
                 <tr>
                     <th>Registration Number</th>
                     <th>Applicant Name</th>
