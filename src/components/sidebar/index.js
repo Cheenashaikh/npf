@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./sidebar.css";
+import logo from "../../assets/logo-dark.png"
 
 function Sidebar({ user, onLogout }) {
     const [navCollapse, setNavCollapse] = useState(false);
@@ -13,7 +14,8 @@ function Sidebar({ user, onLogout }) {
             <div className="sidebar_content">
                 <div className="headerSidebar">
                     <img
-                        src="https://pha.gov.pk/img/logo12.png"
+                        // src="https://pha.gov.pk/img/logo12.png"
+                        src={logo}
                         alt="logo"
                         className="Sidebarlogo"
                     />
