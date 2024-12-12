@@ -130,7 +130,6 @@ function SignUp({ onLogin }) {
         }
 
         try {
-
             await axios.get(
                 "/membership/sanctum/csrf-cookie",
                 { withCredentials: true }
@@ -145,7 +144,9 @@ function SignUp({ onLogin }) {
                 
                 { cnic, mobile_no: mobile },
                 
-                { withCredentials: true }
+                { withCredentials: true ,
+                  
+                }
                
 
             );

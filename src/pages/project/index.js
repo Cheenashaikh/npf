@@ -1,7 +1,9 @@
 
+
 import React, { useEffect, useState } from "react";
 import "./project.css";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 function Project({ user }) {
     const [projects, setProjects] = useState([]);
@@ -10,25 +12,24 @@ function Project({ user }) {
 
     useEffect(() => {
         const fetchProjects = async () => {
-
             try {
                 console.log("Fetching projects for CNIC:", user.cnic);
-               
-                // await axios.get(
-                //     "http://175.107.14.182:8080/membership/sanctum/csrf-cookie",
-                //     { withCredentials: true }
-                // );
-                await axios.get(
-                    "http://175.107.14.182:8080/membership/sanctum/csrf-cookie",
-                    { withCredentials: true }
-                );
-                
+
+                const token = "30264|ZOrc7MNmEIgk3Rd6gUrZnFmoOdxKWaPWv3SOGP6g9a014ddd"; 
+
+              
+                await axios.get("/membership/sanctum/csrf-cookie", { withCredentials: true });
+
+                const csrfToken = Cookies.get("XSRF-TOKEN");
+
                 const response = await axios.post(
-                    "http://175.107.14.182:8080/membership/api/getProjectsByCnic",
+                    "/membership/api/getProjectsByCnic",
                     { cnic: user.cnic },
                     {
                         headers: {
-                            'X-CSRF-TOKEN': document.cookie.match(/XSRF-TOKEN=([^;]+)/)?.[1], 
+                            "X-XSRF-TOKEN": csrfToken,
+                            Authorization: `Bearer ${token}`,
+                            "Content-Type": "application/json",
                         },
                         withCredentials: true,
                     }
@@ -36,7 +37,7 @@ function Project({ user }) {
 
                 console.log("API response:", response.data);
 
-                if (response.data.status) {
+                if (response.data.status && response.data.data?.projects) {
                     setProjects(response.data.data.projects);
                 } else {
                     setError(response.data.message || "No projects found.");
@@ -52,9 +53,9 @@ function Project({ user }) {
         fetchProjects();
     }, [user]);
 
-
     return (
         <div className="table">
+        
             <table className="content-table">
                 <thead>
                     <tr>
@@ -63,20 +64,25 @@ function Project({ user }) {
                         <th>CNIC</th>
                         <th>Project Name</th>
                         <th>Project Code</th>
+                       
                     </tr>
                 </thead>
                 <tbody>
-                    {projects.map((project) => (
-                        <tr key={project.ProjectID}>
-                            <td>{project.RegistrationNo}</td>
-                            <td>{project.ApplicantName}</td>
-                            <td>{project.CNIC}</td>
-                            <td>{project.ProjectName}</td>
-                            <td>{project.ProjectCode}</td>
+                    {projects.length > 0 ? (
+                        projects.map((project) => (
+                            <tr key={project.ProjectID}>
+                                <td>{project.RegistrationNo}</td>
+                                <td>{project.ApplicantName}</td>
+                                <td>{project.CNIC}</td>
+                                <td>{project.ProjectName}</td>
+                                <td>{project.ProjectCode}</td>
+                            </tr>
+                        ))
+                    ) : (
+                        <tr>
+                            <td colSpan="5">No projects available</td>
                         </tr>
-                    ))}
-
-
+                    )}
                 </tbody>
             </table>
 
@@ -87,5 +93,4 @@ function Project({ user }) {
 }
 
 export default Project;
-
 
