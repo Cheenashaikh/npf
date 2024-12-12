@@ -1,10 +1,11 @@
 :root{
-  --primary-color:#a4c4b5;
+  --primary-color:#010422;
   --secondary-color:#717775;
   --text-dark:#333333;
   --text-light:#767268;
   --extra-light:#f3f4f6;
-  --white:#ffffff;
+   --white:#ffffff; 
+
 }
 *{
   padding: 0;
