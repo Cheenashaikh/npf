@@ -19,6 +19,10 @@ function App() {
         setLoggedInUser(null);
     };
 
+    const handleLoginSubmit = (userData) => {
+        handleLogin(userData);  
+    };
+    
     return (
         <Router>
             <div className="app-container">
