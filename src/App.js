@@ -6,6 +6,7 @@ import Dashboard from "./pages/dashboard";
 import "./App.css";
 import Project from "./pages/project";
 import ProjectSummary from "./pages/projectSummary";
+import MakePayment from "./pages/makePayment";
 
 
 function App() {
@@ -59,11 +60,21 @@ function App() {
                                 )
                             }
                         />
-                        <Route
+                          <Route
                             path="/projectSummary"
                             element={
                                 loggedInUser ? (
                                     <ProjectSummary user={loggedInUser} />
+                                ) : (
+                                    <Navigate to="/" replace />
+                                )
+                            }
+                        />
+                        <Route
+                            path="/makePayment"
+                            element={
+                                loggedInUser ? (
+                                    <MakePayment user={loggedInUser} />
                                 ) : (
                                     <Navigate to="/" replace />
                                 )

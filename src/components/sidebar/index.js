@@ -49,11 +49,21 @@ function Sidebar({ user, onLogout }) {
                         </Link>
                     </div>
                     <div className="nav-option option1">
+                    <i className="bi bi-cash"></i>
+
+
+                        <Link to="/makePayment" >
+                            <h3>Make Payment</h3>
+                        </Link>
+                    </div>
+                    <div className="nav-option option1">
                         <i className="bi bi-power"></i>
                         <Link to="/" onClick={onLogout}>
                             <h3>Logout</h3>
                         </Link>
                     </div>
+                    
+                    
                 </div>
             </div>
         </div>

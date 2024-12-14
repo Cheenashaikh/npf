@@ -6,20 +6,27 @@ import Cookies from "js-cookie";
 function Project({ user }) {
     const [projects, setProjects] = useState([]);
     const [history, setHistory] = useState([]);
+    const [paymentSchedule, setPaymentSchedule] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
     const [modal, setModal] = useState(false);
     const [selectedProject, setSelectedProject] = useState(null);
+    const [activeTab, setActiveTab] = useState("history");
+    const [registrationNo, setRegistrationNo] = useState(null)
 
     const openModal = (project) => {
-        console.log("Open Modal clicked");
         setSelectedProject(project);
+        setRegistrationNo(project.RegistrationNo)
         setModal(true);
     };
 
     const closeModal = () => {
         setModal(false);
         setSelectedProject(null);
+    };
+
+    const handleTabChange = (tab) => {
+        setActiveTab(tab);
     };
 
     useEffect(() => {
@@ -45,11 +52,11 @@ function Project({ user }) {
 
                 if (response.data.status && response.data.data?.projects) {
                     setProjects(response.data.data.projects);
+                    // setRegistrationNo(response.data.data.projects.RegistrationNo)
                 } else {
                     setError(response.data.message || "No projects found.");
                 }
             } catch (err) {
-                console.error("Error fetching data:", err);
                 setError(err.response?.data?.message || "Failed to fetch data");
             } finally {
                 setLoading(false);
@@ -60,9 +67,9 @@ function Project({ user }) {
     }, [user]);
 
     useEffect(() => {
+        if (!registrationNo) return;
         const fetchHistory = async () => {
             try {
-                console.log("Fetching project summary for CNIC:", user.cnic);
                 const token = "30264|ZOrc7MNmEIgk3Rd6gUrZnFmoOdxKWaPWv3SOGP6g9a014ddd";
 
                 await axios.get("/membership/sanctum/csrf-cookie", { withCredentials: true });
@@ -70,9 +77,7 @@ function Project({ user }) {
 
                 const response = await axios.post(
                     "/membership/api/AllotteePaymentSummaryPortal",
-                    {
-                        registrationNo: user.registrationNo,
-                    },
+                    { RegistrationNo: registrationNo },
                     {
                         headers: {
                             "X-XSRF-TOKEN": csrfToken,
@@ -82,30 +87,31 @@ function Project({ user }) {
                         withCredentials: true,
                     }
                 );
-                console.log("CSRF TOKEN", csrfToken);
-                console.log("header", `Bearer ${token}`);
+                console.log("AA")
+                console.log(registrationNo)
+               
 
-                console.log("data:", response.data);
-                console.log(response.data.data.projectHistory);
-
-                if (response.data.status && response.data.data?.History > 0) {
-                    setHistory(response.data.data.projectHistory);
-                } else {
+                if (response.data.status && response.data.data) {
+                    setHistory(response.data.data.PaymentHistory || []);
+                    setPaymentSchedule(response.data.data.PaymentSchedule || []);
+                }
+                 else {
                     setError(response.data.message || "No data found");
                 }
             } catch (err) {
-                console.error("Error fetching data:", err);
                 setError(err.response?.data?.message || "Failed to fetch data");
             } finally {
                 setLoading(false);
             }
-        };
+            console.log("History:", history);
+            console.log("Payment Schedule:", paymentSchedule);        };
 
         fetchHistory();
-    }, [user]);
+    }, [registrationNo]);
 
     return (
         <div className="table">
+        
             <table className="content-table">
                 <thead>
                     <tr>
@@ -118,6 +124,7 @@ function Project({ user }) {
                     </tr>
                 </thead>
                 <tbody>
+               
                     {projects.length > 0 ? (
                         projects.map((project) => (
                             <tr key={project.ProjectID}>
@@ -140,68 +147,117 @@ function Project({ user }) {
             </table>
 
             {modal && selectedProject && (
-                <div className="modal-overlay" onClick={closeModal}>
-                    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                        <button className="close-button" onClick={closeModal}>
-                            &times;
-                        </button>
+                <div className="modal">
+                <div className="overlay" onClick={closeModal}></div>
+                    <div className="modal-content" >
+                        
                         <p><strong>Project Name:</strong> {selectedProject.ProjectName}</p>
                         <p><strong>Project Code:</strong> {selectedProject.ProjectCode}</p>
-                        <div className="col-6 tab p-5">
-                            <ul className="d-flex">
-                                <li className="flex-fill">Payment History</li>
-                                <li className="flex-fill">Schedule</li>
+
+                        <div className="tabs">
+                            <ul className="tab">
+                                <li
+                                    className={`flex-fill ${activeTab === "history" ? "active" : ""}`}
+                                    onClick={() => handleTabChange("history")}
+                                >
+                                    Payment History
+                                </li>
+                                <li
+                                    className={`flex-fill ${activeTab === "schedule" ? "active" : ""}`}
+                                    onClick={() => handleTabChange("schedule")}
+                                >
+                                    Schedule
+                                </li>
+                                
                             </ul>
-                            <div className="content"></div>
-                            <h2>Payment History:</h2>
-                            <div className="history">
-                                <table className="history-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Schedule Type</th>
-                                            <th>DDPONumber</th>
-                                            <th>Amount Paid</th>
-                                            <th>Payment Date</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {history.length > 0 ? (
-                                            history.map((project, index) => (
-                                                <tr key={index}>
-                                                    <td>{project.PaymentSchedule.map((schedule, idx) => (
-                                                        <div key={idx}>{schedule.ScheduleType}</div>
-                                                    ))}</td>
-                                                    <td>
-                                                        {project.PaymentHistory.map((payment, idx) => (
-                                                            <div key={idx}>{payment.DDPONumber}</div>
-                                                        ))}
-                                                    </td>
-                                                    <td>{project.PaymentSchedule.map((amount, idx) => (
-                                                        <div key={idx}>{amount.AmountPaid}</div>
-                                                    ))}</td>
-                                                    <td>{project.PaymentSchedule.map((payment, idx) => (
-                                                        <div key={idx}>{payment.PaymentDate}</div>
-                                                    ))}</td>
-                                                </tr>
-                                            ))
-                                        ) : (
-                                            <tr>
-                                                <td colSpan="4">No payment history available</td>
-                                            </tr>
-                                        )}
-                                    </tbody>
-                                </table>
+
+
+                            <div className="content">
+                                {activeTab === "history" && (
+                                    <>
+                                        <h2>Payment History:</h2>
+                                        <div className="history">
+                                            <table className="history-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Payment Type</th>
+                                                        <th>Amount Paid</th>
+                                                        <th>DPO Number</th>
+                                                        <th>Payment Date</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {history.length > 0 ? (
+                                                        history.map((payment, index) => (
+                                                            <tr key={index}>
+                                                                <td>{payment.PaymentType}</td>
+                                                                <td>{payment.AmountPaid}</td>
+                                                                <td>{payment.DDPONumber}</td>
+                                                                <td>{payment.PaymentDate}</td>
+                                                            </tr>
+                                                        ))
+                                                    ) : (
+                                                        <tr>
+                                                            <td colSpan="4">No payment history available</td>
+                                                        </tr>
+                                                    )}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </>
+                                )}
+
+                                {activeTab === "schedule" && (
+                                    <>
+                                        <h2>Payment Schedule:</h2>
+                                        <div className="history">
+                                            <table className="history-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Schedule Type</th>
+                                                        <th>Due Date</th>
+                                                        <th>Amount Due</th>
+                                                        <th>Amount Paid</th>
+                                                        <th>Status</th>
+                                                        <th>Installment No</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {paymentSchedule.length > 0 ? (
+                                                        paymentSchedule.map((schedule, index) => (
+                                                            <tr key={index}>
+                                                                <td>{schedule.ScheduleType}</td>
+                                                                <td>{schedule.DueDate}</td>
+                                                                <td>{schedule.AmountDue}</td>
+                                                                <td>{schedule.AmountPaid}</td>
+                                                                <td>{schedule.Status}</td>
+                                                                <td>{schedule.InstallmentNo}</td>
+                                                            </tr>
+                                                        ))
+                                                    ) : (
+                                                        <tr>
+                                                            <td colSpan="6">No payment schedule available</td>
+                                                        </tr>
+                                                    )}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </>
+                                )}
+                                
                             </div>
+                            <button onClick={closeModal} style={{color:"#FFFFFF"}}>Close</button>
                         </div>
                     </div>
                 </div>
+                
             )}
 
             {loading && <p>Loading projects...</p>}
             {error && <p>{error}</p>}
         </div>
+    
     );
 }
 
 export default Project;
-
