@@ -35,10 +35,12 @@
 
 .sidebar-container {
     background-color: var(--primary-color);
+    position: relative;
     z-index: 10;
     margin-top: 0px;
     max-width: 210px;
     height: 100vh
+    
 }
 
 .sidebar-container::-webkit-scrollbar {

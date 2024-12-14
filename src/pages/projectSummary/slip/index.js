@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./slip.css";
 
-function Slip({ user, payment, paymentMethod }) {
+function Slip({  payment, paymentMethod }) {
     const [slipNumber, setSlipNumber] = useState("");
 
     useEffect(() => {
@@ -37,15 +37,15 @@ function Slip({ user, payment, paymentMethod }) {
                     <tbody>
                         <tr>
                             <td>Member No</td>
-                            <td>{user.RegistrationNo || "N/A"}</td>
+                            <td>{payment.RegistrationNo || "N/A"}</td>
                         </tr>
                         <tr>
                             <td>Name</td>
-                            <td>{user.ApplicantName || "N/A"}</td>
+                            <td>{payment.ApplicantName || "N/A"}</td>
                         </tr>
                         <tr>
                             <td>CNIC</td>
-                            <td>{user.CNIC || "N/A"}</td>
+                            <td>{payment.CNIC || "N/A"}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -61,7 +61,7 @@ function Slip({ user, payment, paymentMethod }) {
                     <tbody>
                         <tr>
                             <td>{paymentMethod || "N/A"}</td>
-                            <td>{user.AmountDue || "N/A"}</td>
+                            <td>{payment.AmountDue || "N/A"}</td>
                         </tr>
                         <tr>
                             <td>Amount</td>

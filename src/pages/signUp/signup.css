@@ -83,7 +83,7 @@ form input:focus ~ label,
 form input:not(:placeholder-shown) ~ label {
     top: -10px;
     font-size: 0.8rem;
-    color: var(--primary-color); /* Or any color you want */
+    color: var(--primary-color); 
 }
 form p{
     text-align: right;
