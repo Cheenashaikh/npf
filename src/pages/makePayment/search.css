@@ -38,6 +38,8 @@ form input:not(:placeholder-shown) ~ label {
     display: flex;
     justify-content: center;
     margin: 20px;
+    position: relative;
+    z-index: 1;
 }
 
 
@@ -125,4 +127,8 @@ form input:not(:placeholder-shown) ~ label {
     margin-left: 10px;
 }
 
+}
+.radio{
+    display: flex;
+   gap:40px
 }
