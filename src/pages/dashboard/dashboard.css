@@ -22,13 +22,41 @@
 
     padding: 15px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px #888888;
     width: 35vh;
-    height: 25vh;
+    height: 22vh;
     animation: fadeIn 0.6s ease-out;
- color: var(--white);
-    background-color: var(--primary-color);
+ color: var(--secondary-color);
+    background-color: var(--white);
     position: relative;
+  
+
+}
+.card_iicon{
+    color: #FFE1D1;
+    background-color: #E54C32;
+    border: 1px solid;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+
+}
+#one{
+    color: #76C83C;
+    background-color: #76C83C;
+}
+#two{
+    color: #9347F1;
+    background-color: #EBD2FF;
+}
+
+#three{
+    color: #FFF2CB;
+    background-color: #E99F12;
+}
+#four{
+    color: #418f0c98;
+    background-color: #c7fca0;
 }
 @keyframes fadeIn{
     0%{
@@ -44,7 +72,10 @@
 .card-inner {
     display: flex;
     align-items: center;
+    flex-direction: column;
     gap: 10px;
+    padding-bottom: 10px;
+   
 }
 
 .card_iicon {
