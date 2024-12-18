@@ -9,6 +9,7 @@ import ProjectSummary from "./pages/projectSummary";
 import MakePayment from "./pages/makePayment";
 import Contact from "./pages/contactUs";
 import Complaint from "./pages/complaint";
+import Profile from "./pages/profile";
 
 
 function App() {
@@ -97,6 +98,17 @@ function App() {
                             element={
                                 loggedInUser ? (
                                     <Complaint user={loggedInUser} />
+                                ) : (
+                                    <Navigate to="/" replace />
+                                )
+                            }
+                        />
+
+                        <Route
+                            path="/profile"
+                            element={
+                                loggedInUser ? (
+                                    <Profile user={loggedInUser} />
                                 ) : (
                                     <Navigate to="/" replace />
                                 )

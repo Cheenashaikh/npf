@@ -12,14 +12,19 @@ function Dropdown({logout}){
         
               <div className="flex flex-col dropdown">
                 <ul className="flex flex-col gap-4">
-                  {/* <li onClick={handleLogout}>LogOut</li> */}
+                 
                   <li ><div >
                         
                         <Link to="/" onClick={logout} style={{textDecoration:"none"}}>
                             <li >Logout</li>
                         </Link>
                     </div></li>
-                  <li>Profile</li>
+                    <li ><div >
+                        
+                        <Link to="/profile" style={{textDecoration:"none"}}>
+                            <li >profile</li>
+                        </Link>
+                    </div></li>
                 </ul>
               </div>
             );
