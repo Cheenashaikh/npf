@@ -7,6 +7,8 @@ import "./App.css";
 import Project from "./pages/project";
 import ProjectSummary from "./pages/projectSummary";
 import MakePayment from "./pages/makePayment";
+import Contact from "./pages/contactUs";
+import Complaint from "./pages/complaint";
 
 
 function App() {
@@ -21,9 +23,9 @@ function App() {
     };
 
     const handleLoginSubmit = (userData) => {
-        handleLogin(userData);  
+        handleLogin(userData);
     };
-    
+
     return (
         <Router>
             <div className="app-container">
@@ -60,7 +62,7 @@ function App() {
                                 )
                             }
                         />
-                          <Route
+                        <Route
                             path="/projectSummary"
                             element={
                                 loggedInUser ? (
@@ -80,7 +82,26 @@ function App() {
                                 )
                             }
                         />
-
+                        <Route
+                            path="/contact"
+                            element={
+                                loggedInUser ? (
+                                    <Contact user={loggedInUser} />
+                                ) : (
+                                    <Navigate to="/" replace />
+                                )
+                            }
+                        />
+                        <Route
+                            path="/complaint"
+                            element={
+                                loggedInUser ? (
+                                    <Complaint user={loggedInUser} />
+                                ) : (
+                                    <Navigate to="/" replace />
+                                )
+                            }
+                        />
 
 
                     </Routes>

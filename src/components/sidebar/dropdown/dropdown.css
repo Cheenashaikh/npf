@@ -1,0 +1,37 @@
+.dropdown{
+    position: absolute;
+    color: var( --secondary-color);
+    background-color: var(--white);
+    right: 17rem;
+    width: 100px;
+    top: 4.5rem;
+    border: 1px solid var(--text-dark);
+    border-radius: 10px;
+    padding: 4px;
+
+
+}
+.dropdown li{
+    cursor: pointer;
+    color: var(--secondary-color);
+    
+}
+.dropdown li:hover{
+    color: var(--primary-color);
+}
+.dropdown ul{
+    list-style-type: none;
+}
+.dropdown::before{
+    content: "";
+    position: absolute;
+    top: -0.7rem;
+    right: 1.1rem;
+    width: 20px;
+    height: 20px;
+    transform: rotate(45deg);
+    background-color: var(--white);
+    border-left: 1px solid;
+    border-top: 1px solid;
+
+}

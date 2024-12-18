@@ -1,0 +1,145 @@
+.contact {
+  margin-left: 260px;
+  margin-top: -45%;
+  max-width: 70%;
+  width: 80%;
+  height: auto; 
+  border: 1px solid var(--secondary-color);
+  box-shadow: 5px 7px #888888;
+  animation: fadeIn 0.6s ease-in-out;
+  flex-direction: column;
+  padding-right: 40px;
+  padding-left: 40px;
+  margin-bottom: 120px;
+  position: relative;
+  border-radius: 8px;
+  padding-bottom: 30px;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.heading {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.heading img {
+  max-width: 150px;
+  margin: auto;
+  margin-bottom: 0.2rem;
+}
+
+.heading h2 {
+  margin-bottom: 1rem;
+  font-size: 1.7rem;
+  color: var(--secondary-color);
+}
+
+.name {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: space-between;
+  gap: 200px; 
+}
+.name  .input_group input {
+    width: 50vh;
+  
+   }
+
+.input_group input,
+.input_group textarea {
+  width: 100%; 
+  max-width: 100%; 
+}
+
+.message .input_group textarea {
+  height: 150px;
+}
+
+.tel,
+.email,
+.Subject {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+textarea {
+  padding: 10px;
+  border-radius: 5px;
+}
+
+
+@media (max-width: 768px) {
+  .contact {
+    margin-left: 220px;
+    margin-top: -85%;
+    width: 100%;
+    height: auto; 
+    margin-bottom: 20px;
+  }
+
+  .name {
+    flex-wrap: nowrap;
+
+    gap: 5px;
+    flex-direction: column; 
+  }
+  .name  .input_group input {
+   width: 100%;
+ 
+  }
+
+  .input_group input {
+    width: 100%; 
+    padding: 10px;
+  }
+
+  .input_group textarea {
+    width: 100%; 
+    padding: 10px;
+  }
+
+  .heading h2 {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width:576px) {
+    .contact{
+        margin-top: -95vh;
+        margin-left: 120px;
+        width: 70%;
+    }
+    
+}
+@media (max-width: 320px) {
+    .contact{
+       box-shadow: none;
+       border: none;
+       margin-left: 90px;
+    }
+    .input_group {
+        padding: 10px;
+    }
+
+    .input_group input {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .input_group label {
+        font-size: 12px;
+    }
+}

@@ -5,9 +5,14 @@ import { Link } from "react-router-dom";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./sidebar.css";
 import logo from "../../assets/logo-dark.png"
+import Dropdown from "./dropdown";
+import { useNavigate } from "react-router-dom";
 
 function Sidebar({ user, onLogout }) {
     const [navCollapse, setNavCollapse] = useState(false);
+    const [drop, setDrop] = useState(false);
+  
+
 
     return (
         <div>
@@ -24,9 +29,11 @@ function Sidebar({ user, onLogout }) {
                         onClick={() => setNavCollapse(!navCollapse)}
                     ></i>
 
-                    <h4 className="h4">{user.name}</h4>
 
-                    <img src={user.image} className="image" />
+
+                    <img src="https://as2.ftcdn.net/v2/jpg/01/29/35/71/1000_F_129357114_ZjUlv9fW5umC66cuKOArjDu8Q7CGhCo7.jpg" className="image" onClick={() => setDrop(!drop)} 
+                    />
+                    {drop && (<Dropdown logout={onLogout} />)}
 
                 </div>
                 <div className={`sidebar-container ${navCollapse ? "navCollapse" : ""}`}>
@@ -36,6 +43,7 @@ function Sidebar({ user, onLogout }) {
                             <h3>Dashboard</h3>
                         </Link>
                     </div>
+
                     <div className="nav-option option1">
                         <i className="bi bi-clipboard-check"></i>
                         <Link to="/project">
@@ -49,7 +57,7 @@ function Sidebar({ user, onLogout }) {
                         </Link>
                     </div>
                     <div className="nav-option option1">
-                    <i className="bi bi-cash"></i>
+                        <i className="bi bi-cash"></i>
 
 
                         <Link to="/makePayment" >
@@ -57,13 +65,28 @@ function Sidebar({ user, onLogout }) {
                         </Link>
                     </div>
                     <div className="nav-option option1">
+                        <i className="bi bi-telephone">  </i>
+                        <Link to="/contact">
+                            <h3>Contact Us</h3>
+                        </Link>
+
+                    </div>
+                    <div className="nav-option option1">
+                        <i className="bi bi-chat-dots">  </i>
+                        <Link to="/complaint">
+                            <h3>Complaint Box</h3>
+                        </Link>
+
+                    </div>
+
+                    <div className="nav-option option1">
                         <i className="bi bi-power"></i>
                         <Link to="/" onClick={onLogout}>
                             <h3>Logout</h3>
                         </Link>
                     </div>
-                    
-                    
+
+
                 </div>
             </div>
         </div>
