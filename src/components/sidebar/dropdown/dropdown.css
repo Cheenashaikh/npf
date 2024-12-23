@@ -35,3 +35,36 @@
     border-top: 1px solid;
 
 }
+
+@media screen and (max-width:768px) {
+    .dropdown{
+       
+    
+        right: 3rem;
+        
+    
+    }    
+    
+}
+
+@media screen and (max-width:576px) {
+    .dropdown{
+       
+    
+        right: 1rem;
+        
+    
+    }    
+    
+}
+
+@media screen and (max-width:320px) {
+    .dropdown{
+       
+    
+        right: 2rem;
+        
+    
+    }    
+    
+}
