@@ -9,7 +9,7 @@ function Dropdown({logout}){
             navigate("/")
         }
     return(
-        
+        <div className="drop-down-container">
               <div className="flex flex-col dropdown">
                 <ul className="flex flex-col gap-4">
                  
@@ -26,6 +26,7 @@ function Dropdown({logout}){
                         </Link>
                     </div></li>
                 </ul>
+              </div>
               </div>
             );
           }

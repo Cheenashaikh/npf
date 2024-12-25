@@ -1,8 +1,11 @@
+.drop-down-container{
+    position: relative;
+}
 .dropdown{
     position: absolute;
     color: var( --secondary-color);
     background-color: var(--white);
-    right: 17rem;
+    right: 4rem;
     width: 100px;
     top: 4.5rem;
     border: 1px solid var(--text-dark);
@@ -40,7 +43,7 @@
     .dropdown{
        
     
-        right: 3rem;
+        right: 4rem;
         
     
     }    
@@ -51,7 +54,7 @@
     .dropdown{
        
     
-        right: 1rem;
+        right: 4.5rem;
         
     
     }    
@@ -62,7 +65,7 @@
     .dropdown{
        
     
-        right: 2rem;
+        right: 4rem;
         
     
     }    
