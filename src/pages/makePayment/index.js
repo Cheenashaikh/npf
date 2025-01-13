@@ -156,7 +156,7 @@ function MakePayment({ user }) {
         const selectedValue=e.target.value
         setPaymentType(selectedValue);
         if(selectedValue==="FULL"){
-            setPartialPayment(0);
+            setPartialPayment("");
         }
     }
 
@@ -350,6 +350,7 @@ function MakePayment({ user }) {
                                     />
                                     <label htmlFor="partial-payment">Partial Payment</label>
                                 </div>
+                                
                             )}
 
 

@@ -1,74 +1,85 @@
-.profile{
+.profile {
     display: flex;
     justify-content: center;
     padding: 30px;
-  
+
 
 
 }
-.profile img{
+
+.cnic h3 {
+    font-weight: 500;
+}
+
+.profile img {
     border: 1px solid;
     height: 20vh;
     width: 20vh;
     border-radius: 50%;
 }
-.cnic{
+
+.cnic {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     font-family: 'Montserrat', sans-serif;
     padding-right: 90px;
     padding-left: 90px;
- 
+
+
 }
 
 @media screen and (max-width:768px) {
-    .cnic{
-      
+    .cnic {
+
         padding-right: 40px;
-    padding-left: 40px;
-     
+        padding-left: 40px;
+
     }
-    
+
 }
+
 @media screen and (max-width:576px) {
-    .cnic{
-      
+    .cnic {
+
         padding-right: 15px;
-    padding-left: 15px;
-     
+        padding-left: 15px;
+
     }
-    
+
 }
+
 @media screen and (max-width:480px) {
-   
-        .cnic{
-          flex-direction: column;
-          align-items: center;
-     
+
+    .cnic {
+        flex-direction: column;
+        align-items: center;
+
         font-size: 14px;
         gap: 10px;
         padding-top: 10px;
-      
-         
-        }
-    
-    
-    
+
+
+    }
+
+
+
 }
+
 @media screen and (max-width:320px) {
-    .cnic{
-      flex-direction: column;
+    .cnic {
+        flex-direction: column;
         padding-right: -1px;
         align-items: flex-start;
- 
-    font-size: 14px;
-    gap: 10px;
-    padding-top: 10px;
-  
-     
+
+        font-size: 14px;
+        gap: 10px;
+        padding-top: 10px;
+
+
     }
-    .profile img{
+
+    .profile img {
         border: 1px solid;
         height: 15vh;
         width: 15vh;
