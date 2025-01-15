@@ -10,6 +10,7 @@ import MakePayment from "./pages/makePayment";
 import Contact from "./pages/contactUs";
 import Complaint from "./pages/complaint";
 import Profile from "./pages/profile";
+import DpcSummary from "./pages/dpcSummary";
 
 
 function App() {
@@ -109,6 +110,16 @@ function App() {
                             element={
                                 loggedInUser ? (
                                     <Profile user={loggedInUser} />
+                                ) : (
+                                    <Navigate to="/" replace />
+                                )
+                            }
+                        />
+                         <Route
+                            path="/dpcSummary"
+                            element={
+                                loggedInUser ? (
+                                    <DpcSummary user={loggedInUser} />
                                 ) : (
                                     <Navigate to="/" replace />
                                 )

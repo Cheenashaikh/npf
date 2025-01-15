@@ -34,9 +34,11 @@
  color: var(--secondary-color);
     background-color: var(--white);
     position: relative;
-  
+   
+ 
 
 }
+
 .card_iicon{
     color: #FFE1D1;
     background-color: #E54C32;
@@ -89,9 +91,17 @@
 @media screen and (max-width:768px) {
     .main-container{
         margin-top: -85%;
-        grid-template-columns: repeat(2,1fr);
+  
         margin-left: 210px;
         
+    }
+    .main-cards{
+      
+        grid-template-columns: repeat(2,1fr);
+    
+    }
+    .card{
+        margin-bottom: 30px;
     }
     
     
@@ -99,13 +109,19 @@
 @media screen and (max-width:576px) {
     .main-container{
         margin-top: -100vh;
-        grid-template-columns: repeat(1,1fr);
+    
        
         gap: 20px;
         
     }
+    .main-cards{
+    
+        grid-template-columns: repeat(1,1fr);
+    
+    }
     .card {
         width: 40vh;
+      
     }
     
 }
@@ -113,7 +129,7 @@
 @media screen and (max-width:480px) {
     .main-container{
         margin-top: -100vh;
-        grid-template-columns: repeat(1,1fr);
+        /* grid-template-columns: repeat(1,1fr); */
        
         gap: 20px;
         
