@@ -219,6 +219,7 @@ function ProjectSummary({ user }) {
                                 </tbody>
                             </table>
                             <div className="history">
+                            <h2>Payment Schedule</h2>
                                 <table className="history-table action">
                                     <thead>
                                         <tr>
@@ -226,7 +227,8 @@ function ProjectSummary({ user }) {
                                             <th>Due Date</th>
                                             <th>Amount Due</th>
                                             <th>Status</th>
-                                            <th>Action</th>
+                                            <th>Installment No</th>
+                                           
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -257,10 +259,12 @@ function ProjectSummary({ user }) {
 
                                                         <td>{schedule.Status}</td>
 
-                                                        <td className="button">
+                                                        {/* <td className="button">
 
                                                             <button style={{ color: "white" }} onClick={() => openPaymentModal(schedule)} >make payment</button>
-                                                        </td>
+                                                        </td> */
+                                                        <td>{schedule.InstallmentNo}</td>}
+                                                       
                                                     </tr>
                                                 );
                                             })
@@ -279,7 +283,7 @@ function ProjectSummary({ user }) {
                 </div>
             )}
 
-            {paymentModal && (
+            {/* {paymentModal && (
                 <div className="modal">
                     <div className="overlay" onClick={closePaymentModal}></div>
                     <div className="modal-content">
@@ -414,7 +418,7 @@ function ProjectSummary({ user }) {
                         </div>
                     </div>
                 </div>
-            )}
+            )} */}
         </div>
     );
 }

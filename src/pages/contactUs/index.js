@@ -74,116 +74,30 @@ function Contact({ user }) {
                 {/* <img src={image}/> */}
                 <h2>Contact Us!</h2>
             </div>
-            <div className="form">
-                <form onSubmit={handleSubmit}>
-                    <div className="name">
-                        <div className="name">
-                            <div className="input_group">
-                                <input
-                                    value={firstName}
-                                    type="text"
-                                    id="firstName"
-                                    placeholder=""
-                                    required
-                                    onChange={handleFirstName}
-
-                                />
-                                <label htmlFor="firstName">First Name</label>
-                            </div>
-
-                            <div className="input_group">
-                                <input
-                                    value={lastName}
-                                    type="text"
-                                    id="lastName"
-                                    placeholder=""
-                                    required
-                                    onChange={handleLastName}
-
-                                />
-                                <label htmlFor="lastName">Last Name</label>
-                            </div>
-                        </div>
-
-
-                    </div>
-                    <div className="tel">
-                        <div className="input_group">
-                            <input
-                                value={tel}
-                                type="tel"
-                                id="tel"
-                                placeholder=""
-                                required
-                                onChange={handleTel}
-
-                            />
-                            <label htmlFor="Telephone">Tel</label>
-                        </div>
 
 
 
-                    </div>
+            <p>PHA Foundation is a Public Company registered with the Securities and Exchange Commission of Pakistan under Section 42 of the Companies Ordinance, 1984. Being one of the implementing arms of the Ministry of Housing & Works, PHA Foundation is consistently striving to eliminate shelterlessness and reduce the housing shortfall in Pakistan.</p>
 
-                    <div className="email">
-                        <div className="input_group">
-                            <input
-                                value={email}
-                                type="email"
-                                id="email"
-                                placeholder=""
-                                required
-                                onChange={handleEmail}
+            <div className="information">
+                <div className="Contactinformation">
+                    <h3>Contact Information</h3>
+                    <p>Shaheed-e-Milat Secretariat, Ground Floor, Blue Area, Islamabad  <a data-v-79c31995="" href="mailto:webmaster@pha.gov.pk" class="email">webmaster@pha.gov.pk</a></p>
+                  
+                </div>
 
-                            />
-                            <label htmlFor="Email">Email</label>
-                        </div>
+                <div className="Contactinformation">
+                    <h3>Useful Links</h3>
+                    <ul data-v-79c31995="" class="links-list"><li data-v-79c31995="">
+                        <a data-v-79c31995="" href="https://mohw.gov.pk" target="_blank" class="link"><i data-v-79c31995="" class="fas fa-external-link-alt"></i> Ministry of Housing &amp; Works</a></li><li data-v-79c31995=""><a data-v-79c31995="" href="https://fgeha.gov.pk" target="_blank" class="link"><i data-v-79c31995="" class="fas fa-external-link-alt"></i> FGEHA</a></li><li data-v-79c31995=""><a data-v-79c31995="" href="https://sifc.gov.pk" target="_blank" class="link"><i data-v-79c31995="" class="fas fa-external-link-alt"></i> Special Investment Facilitation Council (SIFC)</a></li><li data-v-79c31995=""><a data-v-79c31995="" href="https://mohtasib.gov.pk" target="_blank" class="link"><i data-v-79c31995="" class="fas fa-external-link-alt"></i> Wafaqai Mohtasib</a></li></ul>
+                </div>
 
+                <div className="Contactinformation">
+                <h3>Policies</h3>
+                    <ul data-v-79c31995="" class="links-list"><li data-v-79c31995=""><a data-v-79c31995="" href="#term-of-use" class="link"><i data-v-79c31995="" class="fas fa-file-alt"></i> Terms of Use</a></li><li data-v-79c31995=""><a data-v-79c31995="" href="#terms-and-conditions" class="link"><i data-v-79c31995="" class="fas fa-file-alt"></i> Terms and Conditions</a></li><li data-v-79c31995=""><a data-v-79c31995="" href="#refund-policy" class="link"><i data-v-79c31995="" class="fas fa-file-alt"></i> Refund Policy</a></li><li data-v-79c31995=""><a data-v-79c31995="" href="#disclaimer" class="link"><i data-v-79c31995="" class="fas fa-file-alt"></i> Disclaimer</a></li></ul>
 
-
-                    </div>
-                    <div className="Subject">
-                        <div className="input_group">
-                            <input
-                                value={subject}
-                                type="text"
-                                id="subject"
-                                placeholder=""
-                                required
-                                onChange={handleSubject}
-
-                            />
-                            <label htmlFor="subject">subject</label>
-                        </div>
-                    </div>
-
-
-                    <div className="message">
-                        <div className="input_group">
-                            <textarea
-                                value={message}
-                                type="textarea"
-                                id="message"
-                                placeholder="Message..."
-                                required
-                                onFocus={(e) => e.target.placeholder = ""}
-                                onBlur={(e) => e.target.placeholder = "Message..."}
-                                onChange={handleMesssage}
-
-
-                            />
-
-                        </div>
-                    </div>
-                    <button>Submit</button>
-
-
-
-
-
-                </form>
+                </div>
             </div>
-
         </div>
 
     )

@@ -56,6 +56,14 @@ function Sidebar({ user, onLogout }) {
                             <h3>Project Summary</h3>
                         </Link>
                     </div>
+
+                    <div className="nav-option option1">
+                        <i className="bi bi-currency-exchange"></i>
+                        <Link to="/dpcSummary">
+                            <h3>DPC Payment</h3>
+                        </Link>
+                    </div>
+
                     <div className="nav-option option1">
                         <i className="bi bi-cash"></i>
 
